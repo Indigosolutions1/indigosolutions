@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>INDIGO SOLUTIONS | Recruitment & Headhunting</title>
+
+  <meta
+    name="description"
+    content="INDIGO SOLUTIONS – recruitment, headhunting, náborová strategie a HR poradenství."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --indigo: #4f46e5;
+      --indigo-dark: #312e81;
+      --purple: #7c3aed;
+      --dark: #111827;
+      --text: #374151;
+      --muted: #6b7280;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --radius: 20px;
+      --shadow: 0 20px 60px rgba(17, 24, 39, 0.10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,.90);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(229,231,235,.7);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--indigo);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--indigo);
+    }
+
+    .nav-button {
+      background: var(--dark);
+      color: white !important;
+      padding: 11px 18px;
+      border-radius: 10px;
+    }
+
+    .nav-button:hover {
+      background: var(--indigo);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(124,58,237,.15),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 10% 70%,
+          rgba(79,70,229,.10),
+          transparent 30%
+        ),
+        #fff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: var(--indigo);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--indigo);
+      border-radius: 50%;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: clamp(45px, 6vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
+    }
+
+    h1 span {
+      color: var(--indigo);
+    }
+
+    .hero-text {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 23px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--indigo);
+      box-shadow: 0 10px 30px rgba(79,70,229,.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--indigo-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--dark);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--indigo);
+      color: var(--indigo);
+    }
+
+    /* HERO CARD */
+
+    .hero-card {
+      position: relative;
+      padding: 40px;
+      min-height: 470px;
+      border-radius: 30px;
+      background:
+        linear-gradient(
+          145deg,
+          #312e81,
+          #4f46e5 55%,
+          #7c3aed
+        );
+      color: white;
+      overflow: hidden;
+      box-shadow: 0 35px 80px rgba(49,46,129,.25);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      right: -100px;
+      top: -80px;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      left: -160px;
+      bottom: -180px;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-card h2 {
+      font-size: 36px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero-card p {
+      color: rgba(255,255,255,.8);
+      margin-bottom: 35px;
+    }
+
+    .card-number {
+      font-size: 75px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -5px;
+    }
+
+    .card-label {
+      color: rgba(255,255,255,.75);
+      margin-top: 8px;
+    }
+
+    .card-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,.2);
+      margin: 30px 0;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 55px;
+    }
+
+    .section-label {
+      color: var(--indigo);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      color: var(--dark);
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services {
+      background: var(--light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: .3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+      border-color: #c7d2fe;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef2ff;
+      color: var(--indigo);
+      border-radius: 13px;
+      font-size: 21px;
+      margin-bottom: 25px;
+    }
+
+    .service-card h3 {
+      color: var(--dark);
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 500px;
+      border-radius: 30px;
+      background:
+        linear-gradient(
+          135deg,
+          #111827,
+          #312e81
+        );
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 40px;
+    }
+
+    .about-visual::before {
+      content: "INDIGO";
+      position: absolute;
+      font-size: 110px;
+      font-weight: 800;
+      letter-spacing: -8px;
+      color: rgba(255,255,255,.04);
+      transform: rotate(-90deg);
+      right: -110px;
+      top: 120px;
+    }
+
+    .about-quote {
+      position: relative;
+      z-index: 2;
+      color: white;
+      font-size: 25px;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .check-list {
+      margin-top: 30px;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .check {
+      flex-shrink: 0;
+      width: 23px;
+      height: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef2ff;
+      color: var(--indigo);
+      border-radius: 50%;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* =========================
+       PROCESS
+    ========================= */
+
+    .process {
+      background: var(--light);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .process-card {
+      position: relative;
+      background: white;
+      padding: 35px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .process-number {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--indigo);
+      margin-bottom: 30px;
+    }
+
+    .process-card h3 {
+      color: var(--dark);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 90px 0;
+    }
+
+    .cta-box {
+      border-radius: 30px;
+      padding: 70px;
+      background: linear-gradient(
+        135deg,
+        #111827,
+        #312e81
+      );
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+      right: -100px;
+      top: -150px;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.1;
+      margin-bottom: 15px;
+      letter-spacing: -2px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,.7);
+      max-width: 600px;
+    }
+
+    .cta .btn {
+      position: relative;
+      z-index: 2;
+      background: white;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+
+    .cta .btn:hover {
+      background: #eef2ff;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-item {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+      color: var(--muted);
+    }
+
+    .contact-item a:hover {
+      color: var(--indigo);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 17px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px 16px;
+      font: inherit;
+      outline: none;
+      transition: .2s;
+      background: white;
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(79,70,229,.1);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #111827;
+      color: white;
+      padding: 45px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .footer-logo span {
+      color: #818cf8;
+    }
+
+    .footer-copy {
+      color: #9ca3af;
+      font-size: 13px;
+    }
+
+    .footer-link {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 25px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 400px;
+      }
+
+      .cta-box {
+        padding: 45px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 80px 0;
+      }
+
+      h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .hero-card {
+        padding: 30px;
+        min-height: 400px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        INDIGO<span>.</span>
+      </a>
+
+      <button class="menu-btn" aria-label="Otevřít menu">
+        ☰
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#o-nas">O nás</a></li>
+        <li><a href="#proces">Jak pracujeme</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li>
+          <a href="#kontakt" class="nav-button">
+            Nezávazná konzultace
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Recruitment & HR
+          </div>
+
+          <h1>
+            Správní lidé.
+            <span>Správná místa.</span>
+          </h1>
+
+          <p class="hero-text">
+            Propojujeme schopné kandidáty s firmami, kde mohou
+            skutečně využít svůj potenciál. Specializujeme se na
+            recruitment, headhunting a náborovou strategii.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#kontakt" class="btn btn-primary">
+              Chci konzultaci →
+            </a>
+
+            <a href="#sluzby" class="btn btn-secondary">
+              Naše služby
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+          <div class="card-content">
+
+            <h2>
+              Lidé jsou základ
+              každé firmy.
+            </h2>
+
+            <p>
+              Najdeme spojení mezi zkušenostmi kandidáta
+              a tím, co vaše firma opravdu potřebuje.
+            </p>
+
+            <div class="card-line"></div>
+
+            <div class="card-number">15+</div>
+
+            <div class="card-label">
+              let zkušeností v recruitmentu a HR
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
+    <section class="services" id="sluzby">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-label">
+            Co nabízíme
+          </div>
+
+          <h2 class="section-title">
+            HR řešení, která dávají smysl.
+          </h2>
+
+          <p class="section-description">
+            Od vyhledání konkrétního specialisty až po kompletní
+            podporu náborového procesu.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+          <article class="service-card">
+
+            <div class="service-icon">↗</div>
+
+            <h3>Recruitment</h3>
+
+            <p>
+              Vyhledávání a výběr odborných, technických
+              a manažerských kandidátů.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">◎</div>
+
+            <h3>Headhunting</h3>
+
+            <p>
+              Přímé oslovení kandidátů a aktivní vyhledávání
+              lidí, kteří nemusí být právě na pracovním trhu.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">⌁</div>
+
+            <h3>Náborová strategie</h3>
+
+            <p>
+              Nastavení efektivního náboru, který odpovídá
+              potřebám firmy i aktuální situaci na trhu.
+            </p>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">+</div>
+
+            <h3>HR poradenství</h3>
+
+            <p>
+              Externí HR podpora, personální projekty,
+              kariérní poradenství a další HR služby.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="o-nas">
+
+      <div class="container about-grid">
+
+        <div class="about-visual">
+
+          <div class="about-quote">
+            „Dobré spojení kandidáta
+            a firmy není náhoda.“
+          </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+          <div class="section-label">
+            O INDIGO SOLUTIONS
+          </div>
+
+          <h2 class="section-title">
+            Recruitment není jen
+            o životopisech.
+          </h2>
+
+          <p>
+            Na recruitment se zaměřujeme od roku 2009.
+            Hledáme cesty mezi kandidáty na odborné,
+            technické a manažerské pozice a zaměstnavateli,
+            pro které jejich zkušenosti představují skutečný přínos.
+          </p>
+
+          <p>
+            Důležitá je pro nás znalost pracovního trhu,
+            osobní přístup a dlouhodobé vztahy.
+          </p>
+
+          <ul class="check-list">
+
+            <li>
+              <span class="check">✓</span>
+              Individuální přístup ke každému projektu
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Přímé oslovení vhodných kandidátů
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Zaměření na odborné a manažerské pozice
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              Důraz na dlouhodobé a férové vztahy
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROCESS
+    ========================= -->
+
+    <section class="process" id="proces">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-label">
+            Jak pracujeme
+          </div>
+
+          <h2 class="section-title">
+            Jednoduše. Osobně. Efektivně.
+          </h2>
+
+          <p class="section-description">
+            Každý nábor začíná pochopením firmy, pozice
+            a člověka, kterého hledáme.
+          </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+          <article class="process-card">
+
+            <div class="process-number">01 / POZNÁNÍ</div>
+
+            <h3>Porozumíme potřebě</h3>
+
+            <p>
+              Společně si definujeme pozici, očekávání,
+              firemní kulturu a profil ideálního kandidáta.
+            </p>
+
+          </article>
+
+
+          <article class="process-card">
+
+            <div class="process-number">02 / HLEDÁNÍ</div>
+
+            <h3>Najdeme správné lidi</h3>
+
+            <p>
+              Kombinujeme zkušenosti, znalost trhu,
+              recruitment a přímé oslovení kandidátů.
+            </p>
+
+          </article>
+
+
+          <article class="process-card">
+
+            <div class="process-number">03 / PROPOJENÍ</div>
+
+            <h3>Propojíme obě strany</h3>
+
+            <p>
+              Pomáháme kandidátovi i firmě zjistit,
+              zda je jejich spojení skutečně správná volba.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div class="cta-content">
+
+            <h2>
+              Hledáte člověka,
+              který zapadne?
+            </h2>
+
+            <p>
+              Ozvěte se nám. Probereme vaši potřebu
+              a navrhneme další postup.
+            </p>
+
+          </div>
+
+          <a href="#kontakt" class="btn">
+            Kontaktovat INDIGO →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section id="kontakt">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-label">
+            Kontakt
+          </div>
+
+          <h2 class="section-title">
+            Pojďme se spojit.
+          </h2>
+
+          <p class="section-description">
+            Ať už hledáte nového kolegu, potřebujete
+            nastavit recruitment nebo hledáte kariérní příležitost,
+            napište nám.
+          </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+          <div class="contact-info">
+
+            <div class="contact-item">
+
+              <strong>Telefon</strong>
+
+              <a href="tel:+420607551898">
+                +420 607 551 898
+              </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <strong>E-mail</strong>
+
+              <a href="mailto:info@indigosolutions.cz">
+                info@indigosolutions.cz
+              </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <strong>INDIGO SOLUTIONS s.r.o.</strong>
+
+              <span>
+                Vochov 314<br>
+                330 23 Vochov
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <form
+            class="contact-form"
+            action="mailto:info@indigosolutions.cz"
+            method="post"
+            enctype="text/plain"
+          >
+
+            <div class="form-row">
+
+              <input
+                type="text"
+                name="jmeno"
+                placeholder="Jméno"
+                required
+              >
+
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                required
+              >
+
+            </div>
+
+
+            <input
+              type="text"
+              name="firma"
+              placeholder="Firma"
+            >
+
+
+            <textarea
+              name="zprava"
+              placeholder="S čím vám můžeme pomoci?"
+              required
+            ></textarea>
+
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              Odeslat zprávu →
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-logo">
+        INDIGO<span>.</span>
+      </div>
+
+      <div class="footer-copy">
+        © <span id="year"></span> INDIGO SOLUTIONS s.r.o.
+      </div>
+
+      <a
+        class="footer-link"
+        href="https://www.linkedin.com/company/indigo-solutions-s.r.o/"
+        target="_blank"
+        rel="noopener"
+      >
+        LinkedIn →
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    // Aktuální rok ve footeru
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // Mobilní menu
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+
+    // Zavření menu po kliknutí na odkaz
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
