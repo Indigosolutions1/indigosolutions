@@ -11,7 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:108px;
+}
+
+/* Odkazy v horní navigaci nesmí schovat začátek sekce pod pevnou hlavičku. */
+section[id]{
+  scroll-margin-top:108px;
+}
 body{margin:0;font-family:Montserrat,Arial,sans-serif;color:#1c1b4b;background:#fff}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -572,6 +580,14 @@ body{
 
 /* Tablet */
 @media(max-width:900px){
+  html{
+    scroll-padding-top:82px;
+  }
+
+  section[id]{
+    scroll-margin-top:82px;
+  }
+
   .site-header,
   .header-inner{
     height:82px !important;
@@ -606,6 +622,14 @@ body{
 
 /* Mobil */
 @media(max-width:650px){
+  html{
+    scroll-padding-top:72px;
+  }
+
+  section[id]{
+    scroll-margin-top:72px;
+  }
+
   .site-header,
   .header-inner{
     height:72px !important;
@@ -779,7 +803,29 @@ body{
 const hamburger=document.getElementById("hamburger");
 const nav=document.getElementById("mainNav");
 hamburger?.addEventListener("click",()=>{const open=nav.classList.toggle("open");hamburger.setAttribute("aria-expanded",open)});
-nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+/* Přesné scrollování pod pevnou hlavičku.
+   Nepoužíváme jen scroll-margin, protože výška hlavičky se mění
+   podle breakpointu. Cíl se vždy vypočítá podle skutečné výšky
+   hlavičky právě zobrazené v prohlížeči. */
+const header=document.querySelector(".site-header");
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener("click",e=>{
+    const id=link.getAttribute("href");
+    if(!id || id==="#") return;
+    const target=document.querySelector(id);
+    if(!target) return;
+
+    e.preventDefault();
+    nav?.classList.remove("open");
+
+    const headerHeight=header?.getBoundingClientRect().height || 0;
+    const targetTop=target.getBoundingClientRect().top + window.scrollY;
+    const top=Math.max(0, targetTop-headerHeight);
+
+    window.scrollTo({top, behavior:"smooth"});
+    history.pushState(null,"",id);
+  });
+});
 
 const form=document.getElementById("contactForm");
 const note=document.getElementById("formNote");
