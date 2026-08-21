@@ -782,12 +782,12 @@ body{
       </div>
 
       <form id="contactForm">
-        <label>Jméno<input name="firstName" required></label>
-        <label>Příjmení<input name="lastName" required></label>
-        <label>E-mail<input type="email" name="email" required></label>
+        <label>Jméno<input name="firstName" required autocomplete="given-name"></label>
+        <label>Příjmení<input name="lastName" required autocomplete="family-name"></label>
+        <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
         <label>Zanechte nám zprávu...<textarea name="message" rows="5" required></textarea></label>
         <button type="submit">Odeslat</button>
-        <p id="formNote" class="form-note"></p>
+        <p id="formNote" class="form-note" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -835,13 +835,48 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
 
 const form=document.getElementById("contactForm");
 const note=document.getElementById("formNote");
-form?.addEventListener("submit",e=>{
+form?.addEventListener("submit", async e=>{
   e.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  const button=form.querySelector('button[type="submit"]');
+  const originalText=button.textContent;
+  button.disabled=true;
+  button.textContent="Odesílám…";
+  note.textContent="";
+
   const d=new FormData(form);
-  const subject=encodeURIComponent(`Poptávka z webu – ${d.get("firstName")} ${d.get("lastName")}`);
-  const body=encodeURIComponent(`Jméno: ${d.get("firstName")}\nPříjmení: ${d.get("lastName")}\nE-mail: ${d.get("email")}\n\n${d.get("message")}`);
-  window.location.href=`mailto:krcmova@indigosolutions.cz?subject=${subject}&body=${body}`;
-  note.textContent="Otevírám váš e-mailový klient…";
+  const payload={
+    firstName:d.get("firstName"),
+    lastName:d.get("lastName"),
+    email:d.get("email"),
+    message:d.get("message"),
+    _subject:`Poptávka z webu – ${d.get("firstName")} ${d.get("lastName")}`,
+    _replyto:d.get("email"),
+    _template:"table"
+  };
+
+  try {
+    const response=await fetch("https://formsubmit.co/ajax/krcmova@indigosolutions.cz", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+      },
+      body:JSON.stringify(payload)
+    });
+
+    if (!response.ok) throw new Error("Odeslání se nezdařilo.");
+
+    note.textContent="Děkujeme, zpráva byla úspěšně odeslána.";
+    form.reset();
+  } catch (error) {
+    note.textContent="Zprávu se nepodařilo odeslat. Zkuste to prosím znovu nebo napište přímo na krcmova@indigosolutions.cz.";
+  } finally {
+    button.disabled=false;
+    button.textContent=originalText;
+  }
 });
 
 </script>
