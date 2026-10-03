@@ -657,6 +657,394 @@ body{
 }
 </style>
 
+
+<style id="mobile-fix">
+/* =========================================================
+   MOBILNÍ ÚPRAVA – Indigo Solutions
+   ========================================================= */
+
+/* Základ: žádné vodorovné přetékání stránky */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  max-width: 100%;
+}
+
+/* Pevná hlavička */
+@media (max-width: 650px) {
+  .site-header {
+    height: 72px !important;
+    min-height: 72px !important;
+  }
+
+  .header-inner {
+    width: calc(100% - 28px) !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 0 !important;
+  }
+
+  .logo {
+    width: 170px !important;
+    max-width: 170px !important;
+    height: 72px !important;
+    overflow: hidden !important;
+  }
+
+  .logo img {
+    width: auto !important;
+    max-width: 170px !important;
+    height: auto !important;
+    max-height: 64px !important;
+    object-fit: contain !important;
+  }
+
+  .hamburger {
+    display: block !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 7px !important;
+    margin: 0 !important;
+    flex: 0 0 42px !important;
+    cursor: pointer;
+  }
+
+  .hamburger i {
+    display: block !important;
+    width: 25px !important;
+    max-width: 25px !important;
+    height: 2px !important;
+    margin: 5px auto !important;
+  }
+
+  nav {
+    display: none !important;
+    position: absolute !important;
+    top: 72px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 8px 22px 18px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    background: #fff !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,.10) !important;
+  }
+
+  nav.open {
+    display: flex !important;
+  }
+
+  nav a {
+    display: block !important;
+    width: 100% !important;
+    padding: 13px 0 !important;
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+  }
+
+  body {
+    width: 100% !important;
+    padding-top: 72px !important;
+  }
+
+  /* HERO */
+  .hero {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .hero-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    background-size: cover !important;
+    background-position: 63% top !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 48px 22px 58px !important;
+  }
+
+  .hero-content h1 {
+    max-width: 100% !important;
+    margin-bottom: 14px !important;
+    font-size: clamp(26px, 7.5vw, 34px) !important;
+    line-height: 1.14 !important;
+    letter-spacing: -.025em !important;
+  }
+
+  .hero-content p,
+  .hero-content strong {
+    max-width: 100% !important;
+    font-size: 15.5px !important;
+    line-height: 1.6 !important;
+  }
+
+  .hero-button {
+    margin-top: 16px !important;
+    padding: 11px 25px !important;
+    font-size: 14px !important;
+  }
+
+  /* SLUŽBY */
+  .services-section,
+  .exact-services {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .section-inner,
+  .exact-services .section-inner {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+
+  .services-section h2,
+  .exact-services h2 {
+    font-size: clamp(28px, 8vw, 34px) !important;
+    line-height: 1.15 !important;
+  }
+
+  .services-columns,
+  .exact-services-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 62px !important;
+    margin-top: 52px !important;
+  }
+
+  .service-item,
+  .exact-service {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .service-item p,
+  .exact-service p {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ČÍSLA */
+  .numbers {
+    width: 100% !important;
+    padding: 48px 22px !important;
+  }
+
+  .numbers-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .numbers-inner div {
+    width: 100% !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.2) !important;
+    padding: 20px 0 !important;
+  }
+
+  .numbers-inner div:first-child {
+    padding-top: 0 !important;
+  }
+
+  .numbers-inner div:last-child {
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .numbers-inner b {
+    font-size: 48px !important;
+  }
+
+  /* O MNĚ */
+  .about-reference,
+  .about-reference-inner {
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .about-reference-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-reference-left {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 38px 22px 45px !important;
+  }
+
+  .about-reference-left .about-heading {
+    width: 100% !important;
+  }
+
+  .about-reference-left .about-photo,
+  .about-reference-left .about-photo img {
+    width: 101px !important;
+    max-width: 101px !important;
+  }
+
+  .about-reference-left .about-text {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .about-reference-left .about-text h2 {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+  }
+
+  .about-reference-left .about-text h3 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+
+  .about-reference-left .about-text p {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 15.5px !important;
+    line-height: 1.6 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .about-reference-right {
+    width: 100% !important;
+    min-height: 0 !important;
+    height: 360px !important;
+  }
+
+  .about-reference-right img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* KONTAKT */
+  .contact {
+    width: 100% !important;
+    padding: 52px 22px 58px !important;
+  }
+
+  .contact-inner {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .contact-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 42px !important;
+  }
+
+  .contact-copy h2 {
+    font-size: 34px !important;
+    line-height: 1.05 !important;
+  }
+
+  .contact-copy h3 {
+    font-size: 19px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .contact-copy p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  form {
+    width: 100% !important;
+    gap: 18px !important;
+  }
+
+  form label {
+    width: 100% !important;
+  }
+
+  input,
+  textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px !important; /* iPhone nezvětšuje stránku při psaní */
+  }
+
+  form button {
+    padding: 12px 28px !important;
+  }
+
+  /* PATIČKA */
+  footer {
+    width: 100% !important;
+    padding: 22px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+}
+
+/* Velmi malé telefony */
+@media (max-width: 380px) {
+  .logo {
+    width: 150px !important;
+    max-width: 150px !important;
+  }
+
+  .logo img {
+    max-width: 150px !important;
+  }
+
+  .header-inner {
+    width: calc(100% - 20px) !important;
+  }
+
+  .hero-content {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .section-inner,
+  .exact-services .section-inner {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .contact {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .about-reference-left {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
