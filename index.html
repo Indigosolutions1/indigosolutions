@@ -1045,6 +1045,49 @@ html, body {
 }
 </style>
 
+
+<style id="linkedin-contact-style">
+  .linkedin-contact{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-top:18px;
+    padding:10px 16px 10px 12px;
+    border-radius:10px;
+    background:#0A66C2;
+    color:#fff !important;
+    font-size:15px;
+    font-weight:700;
+    line-height:1;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .linkedin-contact:hover{
+    background:#004182;
+    color:#fff !important;
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(10,102,194,.22);
+  }
+  .linkedin-contact svg{
+    width:28px;
+    height:28px;
+    flex:0 0 28px;
+    display:block;
+    fill:currentColor;
+  }
+  @media(max-width:650px){
+    .linkedin-contact{
+      margin-top:14px;
+      font-size:14px;
+      padding:9px 14px 9px 10px;
+    }
+    .linkedin-contact svg{
+      width:26px;
+      height:26px;
+      flex-basis:26px;
+    }
+  }
+</style>
+
 </head>
 <body>
 
@@ -1166,6 +1209,17 @@ html, body {
         <a href="mailto:krcmova@indigosolutions.cz">krcmova@indigosolutions.cz</a><br>
         IČO: 05685451, DIČ: CZ05685451<br>
         Identifikátor datové schránky: iid9k89</p>
+
+        <a class="linkedin-contact"
+           href="https://cz.linkedin.com/in/lucie-kr%C4%8Dmov%C3%A1-ba650460?trk=people-guest_people_search-card"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="LinkedIn profil Lucie Krčmové">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.98h3.41v1.57h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.34 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM3.56 8.98h3.57v11.47H3.56V8.98ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44c.98 0 1.78-.8 1.78-1.78V1.78C24 .8 23.2 0 22.22 0Z"/>
+          </svg>
+          LinkedIn
+        </a>
 </div>
 
       <form id="contactForm">
